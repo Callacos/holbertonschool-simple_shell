@@ -100,6 +100,7 @@ while (1)
 	{
 		free(command);
 		exit(0);
+
 	}
 		break;
 

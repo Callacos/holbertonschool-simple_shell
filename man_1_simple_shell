@@ -1,0 +1,70 @@
+.TH SHELL 1 "22/12/2024" "1.0" "Simple_Shell"
+
+.SH NAME
+shell
+
+.SH SYNOPSIS
+.B shell
+.RI [ options ]
+
+.SH DESCRIPTION
+.B shell
+est un interpréteur de commandes qui fournit une interface utilisateur pour exécuter des commandes. Il lit les commandes depuis l'entrée standard ou depuis un fichier et les exécute.
+
+.SH OPTIONS
+.TP
+.B -c cmd
+Exécute la commande spécifiée
+.TP
+.B -r
+Mode restreint
+.TP
+.B -i
+Mode interactif
+.TP
+.B -v
+Mode verbeux
+
+.SH BUILT-IN COMMANDS
+.TP
+.B cd
+Change le répertoire courant
+.TP
+.B pwd
+Affiche le répertoire actuel
+.TP
+.B echo
+Affiche du texte
+.TP
+.B exit
+Quitte le shell avec le code de retour n
+
+.SH USAGE
+Pour démarrer le shell, exécutez:
+.EX
+$ ./shell
+.EE
+
+.SH EXAMPLES
+Voici quelques exemples d'utilisation du shell:
+.EX
+$ pwd
+/home/user
+$ echo "Hello World"
+Hello World
+$ exit
+.EE
+
+.SH ENVIRONMENT
+.TP
+.B HOME
+Répertoire personnel de l'utilisateur
+.TP
+.B PATH
+Liste des répertoires de recherche des commandes
+
+.SH AUTHORS
+yassine and esteban 
+
+.SH SEE ALSO
+.BR bash (1),
