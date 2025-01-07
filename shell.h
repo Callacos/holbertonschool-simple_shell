@@ -3,5 +3,6 @@
 
 int main(__attribute__((unused)) int ac, char **av);
 extern char **environ;
+void custom_exit(char **args);
 
 #endif
