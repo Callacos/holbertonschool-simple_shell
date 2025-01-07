@@ -13,16 +13,8 @@
 
 void custom_exit(char **args)
 {
-if (args[1] != NULL)
-{
-	int status = atoi(args[1]);
+(void)args;
+printf("Exiting\n");
+exit(0);
+}
 
-	printf("Exiting with status %d\n", status);
-	exit(status);
-}
-	else
-{
-	printf("Exiting\n");
-	exit(0);
-}
-}
