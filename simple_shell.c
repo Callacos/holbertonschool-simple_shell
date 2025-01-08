@@ -8,6 +8,7 @@
 
 void custom_exit(char **args);
 int print_env(char **env);
+char *locate_executable(char *command, char *path);
 
 /**
  * main - Point d'entrée du programme shell
@@ -52,47 +53,54 @@ while (1)
 	}
 	args[i] = NULL;
 
-if (args[0] == NULL)
-	continue;
+	if (args[0] == NULL)
+		continue;
 
-if (strcmp(args[0], "exit") == 0)
-{
-	custom_exit(args);
-}
-else if (strcmp(args[0], "cd") == 0)
-{
-	if (args[1] == NULL)
+	if (strcmp(args[0], "exit") == 0)
 	{
-		fprintf(stderr, "cd: missing argument\n");
-	} else if (chdir(args[1]) != 0)
-	{
-		perror("cd");
+		custom_exit(args);
 	}
-	continue;
-}
-else if (strcmp(args[0], "env") == 0)
-{
-	print_env(envp);
-	continue;
-}
+	else if (strcmp(args[0], "cd") == 0)
+	{
+		if (args[1] == NULL)
+		{
+			fprintf(stderr, "cd: missing argument\n");
+		}
+		else if (chdir(args[1]) != 0)
+		{
+			perror("cd");
+		}
+		continue;
+	}
+	else if (strcmp(args[0], "env") == 0)
+	{
+		print_env(envp);
+		continue;
+	}
 
-pid = fork();
-if (pid == 0)
-{
-	if (execvp(args[0], args) == -1)
+	pid = fork();
+	if (pid == 0)
 	{
-		perror("Erreur d'exécution");
-		exit(127);
+		/* Locate executable using PATH */
+		char *path = getenv("PATH");
+		char *full_path = locate_executable(args[0], path);
+
+		if (full_path == NULL || execve(full_path, args, envp) == -1)
+		{
+			perror("Erreur d'exécution");
+			free(full_path);
+			exit(127);
+		}
+		free(full_path);
 	}
-}
-else if (pid > 0)
-{
-	wait(NULL);
-}
-else
-{
-	perror("Erreur de fork");
-}
+	else if (pid > 0)
+	{
+		wait(NULL);
+	}
+	else
+	{
+		perror("Erreur de fork");
+	}
 }
 
 free(command);
@@ -111,7 +119,40 @@ int i = 0;
 
 while (env[i])
 {
-printf("%s\n", env[i++]);
+	printf("%s\n", env[i++]);
 }
 return (0);
+}
+
+/**
+ * locate_executable - Finds the full path of a command using PATH
+ * @command: The command to find
+ * @path: The PATH environment variable
+ *
+ * Return: Full path of the executable, or NULL if not found
+ */
+char *locate_executable(char *command, char *path)
+{
+char *dir, *full_path;
+size_t len;
+
+if (command[0] == '/' || command[0] == '.')
+	return (strdup(command));
+
+dir = strtok(path, ":");
+while (dir != NULL)
+{
+	len = strlen(dir) + strlen(command) + 2;
+	full_path = malloc(len);
+	if (full_path == NULL)
+		return (NULL);
+
+	snprintf(full_path, len, "%s/%s", dir, command);
+	if (access(full_path, X_OK) == 0)
+		return (full_path);
+
+	free(full_path);
+	dir = strtok(NULL, ":");
+}
+return (NULL);
 }
