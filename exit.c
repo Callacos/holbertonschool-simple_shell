@@ -14,7 +14,6 @@
 void custom_exit(char **args)
 {
 (void)args;
-printf("Exiting\n");
 exit(0);
 }
 
