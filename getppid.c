@@ -4,7 +4,7 @@
 #include "shell.h"
 
 /**
- * main - Entry point of the program.
+ * print_getppid - Entry point of the program.
  *
  * Description: This function retrieves and prints the PID of
  * the parent process
@@ -12,7 +12,7 @@
  *
  * Return: Always 0 (Success).
  */
-int main(void)
+int print_getppid(void)
 {
 	pid_t parent_pid = getppid();
 

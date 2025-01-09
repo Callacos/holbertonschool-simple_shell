@@ -1,20 +1,23 @@
 #include <stdio.h>
 
 /**
- * main - Affiche les arguments passés en ligne de commande sans utiliser 'ac'
- * @av: Tableau des arguments
+ * args - Affiche les arguments passés en ligne de commande sans utiliser 'ac'
+ * @argc: Nombre d'arguments (non utilisé)
+ * @argv: Tableau des arguments
  *
  * Return: 0 si succès
  */
-int main(__attribute__((unused)) char **av)
+int args(int argc, char **argv)
 {
-	int i = 0;
+int i = 0;
 
-	while (av[i] != NULL)
-	{
-		printf("Argument %d : %s\n", i, av[i]);
-		i++;
-	}
+(void)argc;  /* Marquer argc comme non utilisé */
 
-	return (0);
+while (argv[i] != NULL)
+{
+	printf("Argument %d : %s\n", i, argv[i]);
+	i++;
+}
+
+return (0);
 }
