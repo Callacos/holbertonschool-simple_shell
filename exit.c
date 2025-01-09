@@ -11,9 +11,10 @@
  * @args: The arguments passed to the exit command
  */
 
-void custom_exit(char **args)
+void custom_exit(char *args)
 {
 (void)args;
+free(args);
 exit(0);
 }
 

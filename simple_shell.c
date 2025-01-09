@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include "shell.h"
 
-void custom_exit(char **args);
+void custom_exit(char *args);
 int print_env(char **env);
 char *locate_executable(char *command, char *path);
 
@@ -58,7 +58,7 @@ while (1)
 
 	if (strcmp(args[0], "exit") == 0)
 	{
-		custom_exit(args);
+		custom_exit(command);
 	}
 	else if (strcmp(args[0], "cd") == 0)
 	{
@@ -81,7 +81,6 @@ while (1)
 	pid = fork();
 	if (pid == 0)
 	{
-		/* Locate executable using PATH */
 		char *path = getenv("PATH");
 		char *full_path = locate_executable(args[0], path);
 
