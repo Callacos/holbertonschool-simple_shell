@@ -5,7 +5,7 @@ This project is about creating a simple shell. The shell is the command interpre
 # Flowchart
 
 ```
-!{flowchart}(https://files.slack.com/files-tmb/T0423U1MW21-F087W5KJWHM-6c62ac53aa/img_2134_720.jpg)
+!{flowchart}(flow.jpg)
 ```
 
 # Requirements
