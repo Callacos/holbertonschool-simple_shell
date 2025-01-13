@@ -1,6 +1,18 @@
 # Simple Shell
 This project is about creating a simple shell. The shell is the command interpretor in an operating system such as Unix or GNU/Linux, it is a program that executes other programs. It provides a computer user an interface to the Unix/GNU Linux system so that the user can run different commands or utilities/tools with some input data.
 
+# Files
+- 1max_pid.sh
+- AUTHORS
+- README.md
+- argument0.c
+- exit.c
+- flow.jpg
+- getppid.c
+- man_1_simple_shell
+- pid.c
+- shell.h
+- simple_shell.c
 
 # Flowchart
 
