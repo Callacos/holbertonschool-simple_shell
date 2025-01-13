@@ -9,44 +9,44 @@ shell
 
 .SH DESCRIPTION
 .B shell
-est un interpréteur de commandes qui fournit une interface utilisateur pour exécuter des commandes. Il lit les commandes depuis l'entrée standard ou depuis un fichier et les exécute.
+is a command interpreter that provides a user interface to execute commands. It reads commands from standard input or a file and executes them.
 
 .SH OPTIONS
 .TP
 .B -c cmd
-Exécute la commande spécifiée
+Executes the specified command
 .TP
 .B -r
-Mode restreint
+Restricted mode
 .TP
 .B -i
-Mode interactif
+Interactive mode
 .TP
 .B -v
-Mode verbeux
+Verbose mode
 
 .SH BUILT-IN COMMANDS
 .TP
 .B cd
-Change le répertoire courant
+Changes the current directory
 .TP
 .B pwd
-Affiche le répertoire actuel
+Displays the current directory
 .TP
 .B echo
-Affiche du texte
+Displays text
 .TP
 .B exit
-Quitte le shell avec le code de retour n
+Exits the shell with return code n
 
 .SH USAGE
-Pour démarrer le shell, exécutez:
+To start the shell, run:
 .EX
 $ ./shell
 .EE
 
 .SH EXAMPLES
-Voici quelques exemples d'utilisation du shell:
+Here are some examples of using the shell:
 .EX
 $ pwd
 /home/user
@@ -58,13 +58,13 @@ $ exit
 .SH ENVIRONMENT
 .TP
 .B HOME
-Répertoire personnel de l'utilisateur
+The user's home directory
 .TP
 .B PATH
-Liste des répertoires de recherche des commandes
+List of directories to search for commands
 
 .SH AUTHORS
-yassine and esteban 
+yassine and esteban
 
 .SH SEE ALSO
 .BR bash (1),
