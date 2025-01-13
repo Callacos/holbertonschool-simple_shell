@@ -4,7 +4,7 @@ This project is about creating a simple shell. The shell is the command interpre
 
 # Flowchart
 
-!{flowchart}(flow.jpg)
+![Flowchart](flow.jpg)
 
 # Requirements
 
